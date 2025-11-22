@@ -3,25 +3,29 @@
 # Imports
 from tkinter import Tk
 from tkinter import ttk
-
-
-# Defined
-
+from Utils.entry_util import EntrySection
 
 
 # Classed
+class Form:
+    def __init__(self, root):
 
+        # frame consisting all frames
+        self.topLevel = ttk.Frame(root, padding=15)
+        self.topLevel.grid(row=0, sticky="news")
+        self.topLevel.columnconfigure(0, weight=1)
 
-
-# Literals
-
+        # Entries
+        self.entries = EntrySection(self.topLevel, row=0)
 
 
 # Main
-def main():             # all about root will happen here
-    root =  Tk()
+def main():
+    root = Tk()
     root.title("Registration Form")
-    Form(root)          # root is basically the topMost_Parent | Window
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
+    Form(root)
     root.mainloop()
 main()
 
