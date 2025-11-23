@@ -2,7 +2,7 @@
 
 # Imports
 from tkinter import Tk
-from tkinter.ttk import Frame, Button
+from tkinter.ttk import Frame
 from Components.entry_comp import EntrySection
 from Components.gender_comp import GenderSection
 from Components.country_comp import CountrySection
@@ -43,9 +43,9 @@ class Form:
 # Literals
 genders = ("male", "female", "other")
 terms = [
-("Subscribe to newsletter", True),
-("Subscribe to YouTube", False),
-("Follow On Twitter", False)
+    ("Subscribe to newsletter", True),
+    ("Subscribe to YouTube", False),
+    ("Follow On Twitter", False)
 ]
 
 

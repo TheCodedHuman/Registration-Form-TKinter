@@ -21,3 +21,16 @@ class TermSection:
 
             self.termVars.append((label, var))
 
+    # getter
+    def get_values(self): 
+        return {
+            "terms": {
+                label: flag.get() for label, flag in self.termVars
+            }
+        }
+
+    # clear/reset
+    def clear(self):
+        for (_, flag) in self.termVars:
+            flag.set(False)
+

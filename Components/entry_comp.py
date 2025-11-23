@@ -1,10 +1,13 @@
 from tkinter.ttk import Label, Entry, Frame
 
 class Entries:
-    def __init__(self, parent, name, row):
+    def __init__(self, parent, name, row, is_password=False):
         Label(parent, text=f"{name}:").grid(row=row, column=0, sticky="w", pady=5)
-        self.entryField = Entry(parent)
+        self.entryField = Entry(parent, show="*" if is_password else None)
         self.entryField.grid(row=row, column=1, sticky="we")
+    
+    def get(self): return self.entryField.get()
+    def reset(self): return self.entryField.delete(0, "end")
              
 
 class EntrySection:
@@ -15,5 +18,20 @@ class EntrySection:
 
         self.nameField = Entries(self.entryFrame, "Name", row=0)
         self.emailField = Entries(self.entryFrame, "Email", row=1)
-        self.pwField = Entries(self.entryFrame, "Password", row=2)
+        self.pwField = Entries(self.entryFrame, "Password", row=2, is_password=True)
+
+
+    # getter
+    def get_values(self):
+        return {                                    # json ready dict
+            "name": self.nameField.get(),
+            "email": self.emailField.get(),
+            "password": self.pwField.get()
+        }
+    
+    # reset/clear
+    def clear(self):
+        self.nameField.reset()
+        self.emailField.reset()
+        self.pwField.reset()
 

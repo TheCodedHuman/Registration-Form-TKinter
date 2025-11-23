@@ -13,7 +13,9 @@ class GenderSection:
         # Putting all choices in a separate frame
         self.radioFrame = Frame(self.genderFrame)
         self.radioFrame.grid(row=0, column=1, sticky="w", padx=10)
-        self.genderVar = StringVar()            # value of chosen RadioButton | can give default value by value parameter
+        self.genderVar = StringVar()            
+        # can be given default value by value parameter         self.genderVar = StringVar(value=genderArr[0].lower())
+
 
         # Scales to as many genders required (yeah, not necessary tho >:-) )
         for col, gender in enumerate(genderArr, start=1):
@@ -22,4 +24,10 @@ class GenderSection:
                                  value=(gender.lower()), 
                                  variable=self.genderVar)
             choice.grid(row=0, column=col, sticky="w", padx=5)
+
+    # getter
+    def get_values(self): return { "gender": self.genderVar.get() }
+
+    # reset/clear
+    def clear(self): self.genderVar.set("")
 

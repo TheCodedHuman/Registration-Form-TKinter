@@ -12,13 +12,21 @@ class CountrySection:
 
         # Extract Country_Names
         self.countryVar = StringVar()
+        self.countryArr = countryArr
 
         # create as normal first, set values/current, then switch to readonly
         self.countryDropdown = Combobox(self.countryFrame,
                                         textvariable=self.countryVar,
                                         width=30,
                                         state="readonly",
-                                        values=countryArr)
-        self.countryDropdown.current(0)
+                                        values=self.countryArr)
+        self.countryDropdown.current(0)             # default first country
         self.countryDropdown.grid(row=0, column=1, sticky="w", padx=10)      
+
+
+    # getter
+    def get_values(self): return { "country": self.countryVar.get()}
+
+    # clear/reset
+    def clear(self): self.countryVar.set("")
 
