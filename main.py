@@ -7,6 +7,7 @@ from Components.entry_comp import EntrySection
 from Components.gender_comp import GenderSection
 from Components.country_comp import CountrySection
 from Components.terms_comp import TermSection
+from Components.boss_btn_comp import ResetButton, SubmitButton
 from Utils.country_util import getCountries
 
 
@@ -29,7 +30,14 @@ class Form:
         self.country = CountrySection(self.topLevel, "Country", countryArr=getCountries(), row=2)
 
         # Subscription
-        self.sub = TermSection(self.topLevel, termsArr=terms, row=3)
+        self.terms = TermSection(self.topLevel, termsArr=terms, row=3)
+
+        # Boss-Button-Frame
+        self.BossFrame = Frame(self.topLevel, padding=(30, 15))
+        self.BossFrame.grid(row=4, column=0, sticky="we")
+
+        ResetButton(self.BossFrame, resetFields=(self.entries, self.genders, self.country, self.terms))             # Reset-Button within BossFrame
+        SubmitButton(self.BossFrame, submitFields=(self.entries, self.genders, self.country, self.terms))           # Submit-Button within BossFrame
 
 
 # Literals
