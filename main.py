@@ -4,7 +4,7 @@
 from tkinter import Tk
 from tkinter import ttk
 from Utils.entry_util import EntrySection
-
+from Utils.gender_util import GenderSection
 
 # Classed
 class Form:
@@ -18,6 +18,8 @@ class Form:
         # Entries
         self.entries = EntrySection(self.topLevel, row=0)
 
+        # Genders
+        self.genders = GenderSection(self.topLevel, "Gender", ("male", "female", "other"), row=1)
 
 # Main
 def main():

@@ -9,10 +9,11 @@ class Entries:
 
 class EntrySection:
     def __init__(self, parent, row=0, column=0):
-        self.entryFrame = Frame(parent, padding=10)
+        self.entryFrame = Frame(parent)
         self.entryFrame.grid(row=row, column=column, sticky="we")
         self.entryFrame.columnconfigure(1, weight=1)
 
         self.nameField = Entries(self.entryFrame, "Name", row=0)
         self.emailField = Entries(self.entryFrame, "Email", row=1)
         self.pwField = Entries(self.entryFrame, "Password", row=2)
+
