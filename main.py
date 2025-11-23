@@ -2,11 +2,13 @@
 
 # Imports
 from tkinter import Tk
-from tkinter.ttk import Frame
+from tkinter.ttk import Frame, Button
 from Components.entry_comp import EntrySection
 from Components.gender_comp import GenderSection
 from Components.country_comp import CountrySection
+from Components.terms_comp import TermSection
 from Utils.country_util import getCountries
+
 
 # Classed
 class Form:
@@ -21,10 +23,22 @@ class Form:
         self.entries = EntrySection(self.topLevel, row=0)
 
         # Genders
-        self.genders = GenderSection(self.topLevel, "Gender", ("male", "female", "other"), row=1)
+        self.genders = GenderSection(self.topLevel, "Gender", genderArr=genders, row=1)
 
         # Country
         self.country = CountrySection(self.topLevel, "Country", countryArr=getCountries(), row=2)
+
+        # Subscription
+        self.sub = TermSection(self.topLevel, termsArr=terms, row=3)
+
+
+# Literals
+genders = ("male", "female", "other")
+terms = [
+("Subscribe to newsletter", True),
+("Subscribe to YouTube", False),
+("Follow On Twitter", False)
+]
 
 
 # Main
