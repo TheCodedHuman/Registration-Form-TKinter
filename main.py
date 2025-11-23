@@ -2,16 +2,18 @@
 
 # Imports
 from tkinter import Tk
-from tkinter import ttk
-from Utils.entry_util import EntrySection
-from Utils.gender_util import GenderSection
+from tkinter.ttk import Frame
+from Components.entry_comp import EntrySection
+from Components.gender_comp import GenderSection
+from Components.country_comp import CountrySection
+from Utils.country_util import getCountries
 
 # Classed
 class Form:
     def __init__(self, root):
 
         # frame consisting all frames
-        self.topLevel = ttk.Frame(root, padding=15)
+        self.topLevel = Frame(root, padding=15)
         self.topLevel.grid(row=0, sticky="news")
         self.topLevel.columnconfigure(0, weight=1)
 
@@ -20,6 +22,10 @@ class Form:
 
         # Genders
         self.genders = GenderSection(self.topLevel, "Gender", ("male", "female", "other"), row=1)
+
+        # Country
+        self.country = CountrySection(self.topLevel, "Country", countryArr=getCountries(), row=2)
+
 
 # Main
 def main():
