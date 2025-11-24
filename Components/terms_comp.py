@@ -9,6 +9,7 @@ class TermSection:
 
         # term-variables containing flags for chosen terms
         self.termVars = []
+        self.checkButtons = []
 
         # scalable terms and conditions
         for row, (label, flag) in enumerate(termsArr):
@@ -20,6 +21,7 @@ class TermSection:
             check_btn.grid(row=row, column=0, sticky="we")
 
             self.termVars.append((label, var))
+            self.checkButtons.append(check_btn)
 
     # getter
     def get_values(self): 
